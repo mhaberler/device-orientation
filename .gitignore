@@ -23,3 +23,18 @@ dist-ssr
 *.sln
 *.sw?
 untracked
+generated.png
+TODO*
+certs
+
+python/converted_data.json
+python/converted_data.zstd
+python/data.json
+python/data.msgpack
+python/signal-2024-05-29-025804.png
+python/numerify-sensorlog.py
+environments/.env.develop
+gltf/5543 LSM6DS3-LIS3MDL.gltf
+gltf/apple_iphone_13_pro_max.glb
+gltf/OE-SOX-flames.gltf
+gltf/mobile_phone_free__game_ready.glb

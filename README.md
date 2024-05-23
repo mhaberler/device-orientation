@@ -1,72 +1,43 @@
-# Three.js Vite Template with TypeScript
+# Sensorlogger/MQTT Orientation demo
 
-Three.js + Vite + TypeScript starter
+## About Sensor Logger
+see https://www.tszheichoi.com/sensorlogger - great app for Citizen Scientists ;)
 
-- [Demo](https://vite-threejs-ts-template.vercel.app/)
-- [Jump to CLI commands](#cli-commands)
+## try it out
+demo  : https://static.mah.priv.at/apps/device-orientation/
 
-## Copy (clone without git history)
+## or build yourself:
+- `npm install`
+- `npm run dev` 
+- it should come up like so:
+![screenshot](images/shot1.png)
+- click `Debug GUI`
+![screenshot](images/debuggui.png)
+- set MQTT broker name or address
+- adjust port as needed
+- click "Connect"
+- a toast notifications should confirm MQTT connect + subscribe
 
-```shell
-npx degit pachoclo/vite-threejs-ts-template threejs-project
-```
+## configure Sensorlogger via QR Code
+- in the Debug GUI, click 'Sensorlogger QR Code'
+- QR Code appears:
+![QR Code](images/qrcode.png)
+- take picture with your mobile and import into Sensorlogger
+- click the QR code to close 
+- hit 'Start recording'
+- move the mobile
+- screen object should move accordingly
 
----
-<img width="796" alt="screenshot" src="https://github.com/pachoclo/vite-threejs-ts-template/assets/3608140/4b377045-8be5-4021-8cb8-84346a23f680">
----
+## demonstrate "mounting matrix correction"
+- make sure sensorlogger is connected and pushing updates
+- click 'Record & apply Mount Position transform'
+- cube should revert to original position
+- see page 10 of https://invensense.tdk.com/wp-content/uploads/2024/03/eMD_Software_Guide_ICM20948.pdf for an explanation
 
-## Stuff included in the `scene.ts`
+## source
+this is based on:
+- https://github.com/pachoclo/vite-threejs-ts-template 
+- https://github.com/mqttjs/MQTT.js
 
-- [x] Geometry
-- [x] Material
-- [x] Mesh
-- [x] Ambient Light
-- [x] Point Light
-- [x] Camera
-- [x] Scene
-- [x] Canvas
-- [x] Renderer (WebGL)
-- [x] Loading Manager
-- [x] Orbit Controls
-- [x] Drag Controls
-- [x] Grid
-- [x] Antialias enabled
-- [x] Transparent canvas
-- [x] Responsive renderer and camera (to canvas size)
-- [x] Animation Loop
-- [x] Shadows
-- [x] Stats (FPS, ms)
-- [x] Full screen (double-click on canvas)
-- [x] Debug GUI
-
-## Tech Stack
-
-- Three.js
-- TypeScript
-- Vite
-
-## CLI Commands
-
-Installation
-
-```bash
-npm i
-```
-
-Run dev mode
-
-```bash
-npm run dev
-```
-
-Build
-
-```bash
-npm run build
-```
-
-Run build
-
-```bash
-npm run preview
-```
+## status
+very rough.

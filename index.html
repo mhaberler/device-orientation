@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/threejs-icon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Three.js + TypeScript + Vite</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/threejs-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>%VITE_APP_TITLE%</title>
+</head>
+
+<body>
+  <!-- <div id="compassContainer">
+    <object id="compass" type="image/svg+xml" data="northstar.svg"></object>
+  </div> -->
+  <div id="content">
     <canvas id="scene"></canvas>
-    <script type="module" src="/src/scene.ts"></script>
-  </body>
+    <div id="qrcode-container"></div>
+  </div>
+  <script type="module" src="/src/scene.ts"></script>
+</body>
+
 </html>
