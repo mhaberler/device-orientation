@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "tsc && vite build --base=/apps/device-orientation/ && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/device-orientation/"
   },
   "devDependencies": {
     "@types/three": "^0.163.0",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "lil-gui": "^0.19.2",
-    "three": "^0.164.1"
+    "three": "^0.164.1",
+    "vike": "^0.4.171"
   }
 }
