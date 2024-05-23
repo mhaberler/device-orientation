@@ -10,7 +10,7 @@
     "deploy": "tsc && vite build --base=/apps/device-orientation/ && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/device-orientation/"
   },
   "devDependencies": {
-    "@types/three": "^0.163.0",
+    "@types/three": "^0.164.1",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
     "vite-plugin-compression": "^0.5.1"
