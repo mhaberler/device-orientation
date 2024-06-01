@@ -13,7 +13,7 @@
     "preview-hosted": "CONFIG=hosted vite preview",
     "preview-embedded": "CONFIG=embedded vite preview",
     "deploy-hosted": "tsc && CONFIG=hosted vite build --base=/apps/device-orientation/ && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/device-orientation/",
-    "deploy-embedded": "tsc && CONFIG=embedded vite build  --base=/apps/device-orientation/ --emptyOutDir --outDir /Users/mah/Ballon/src/BalloonWare/middleware/picomqtt-tests/data/apps/device-orientation/"
+    "deploy-embedded": "tsc && CONFIG=embedded vite build  --base=/apps/device-orientation/ --emptyOutDir --outDir ../../data/apps/device-orientation/"
   },
   "devDependencies": {
     "@types/pako": "^2.0.3",
