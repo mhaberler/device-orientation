@@ -28,7 +28,7 @@
     "@intosoft/custoqr": "^0.0.8",
     "@oneidentity/zstd-js": "^1.0.3",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
-    "debug": "^4.3.4",
+    "debug": "^4.3.5",
     "lil-gui": "^0.19.2",
     "mqtt": "^5.6.2",
     "notyf": "^3.10.0",
