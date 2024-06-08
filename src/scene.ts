@@ -386,7 +386,7 @@ function init() {
             username: `${import.meta.env.VITE_USER}`,
             password: `${import.meta.env.VITE_PASSWORD}`,
             topic: `${import.meta.env.VITE_TOPIC}`,
-            keepAlive: 30,
+            keepAlive: 60,
             connectTimeout: 5000,
             reconnectPeriod: 2000,
             perMessageDeflate: false,
