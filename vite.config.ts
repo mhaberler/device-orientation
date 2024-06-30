@@ -23,7 +23,15 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
             // https://rollupjs.org/configuration-options/
         },
         build: {
-            target: 'esnext' //browsers can handle the latest ES features
+            target: 'esnext', //browsers can handle the latest ES features
+            // https://stackoverflow.com/questions/71255838/shorten-file-names-in-react-build-directory-to-less-than-32-chars
+            rollupOptions: {
+                output: {
+                  assetFileNames: "a/[hash:10][extname]",
+                  chunkFileNames: "c/[hash:10].js",
+                  entryFileNames: "e/[hash:10].js"
+                }
+              }
         },
         esbuild: {
             supported: {
