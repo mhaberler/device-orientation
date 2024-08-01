@@ -386,7 +386,7 @@ function init() {
             username: `${import.meta.env.VITE_USER}`,
             password: `${import.meta.env.VITE_PASSWORD}`,
             topic: `${import.meta.env.VITE_TOPIC}`,
-            keepAlive: 30,
+            keepAlive: 60,
             connectTimeout: 5000,
             reconnectPeriod: 2000,
             perMessageDeflate: false,
@@ -523,7 +523,7 @@ function mqtt_setup(mqttSettings: MQTTSetting) {
             clientId: clientId,
             clean: true,
             connectTimeout: 5000,
-            reconnectPeriod: 1000,
+            reconnectPeriod: 3000,
             protocol: mqttSettings.protocol,
             keepalive: mqttSettings.keepAlive,
             wsOptions: { perMessageDeflate: mqttSettings.perMessageDeflate }
@@ -534,8 +534,7 @@ function mqtt_setup(mqttSettings: MQTTSetting) {
 
         client.on('error', (err) => {
             console.log('Connection error: ', err)
-            notyf.success(`MQTT Connection error: ${err}`);
-            client.end()
+            notyf.error({message: `MQTT Connection error: ${err}`,  duration: 30});
         })
 
         client.on('reconnect', () => {
