@@ -8,6 +8,7 @@
     "dev-git": "VITE_GIT_VERSION=$(git log -1 --pretty=format:%h -- .) CONFIG=develop vite",
     "dev-hosted": "CONFIG=hosted vite",
     "dev-embedded": "CONFIG=embedded vite",
+    "build": "tsc && CONFIG=hosted vite build",
     "build-hosted": "tsc && CONFIG=hosted vite build",
     "build-embedded": "tsc && CONFIG=embedded vite build",
     "preview-hosted": "CONFIG=hosted vite preview",
