@@ -30,7 +30,7 @@
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "debug": "^4.3.4",
     "lil-gui": "^0.19.2",
-    "mqtt": "^5.6.2",
+    "mqtt": "^5.9.0",
     "notyf": "^3.10.0",
     "three": "^0.164.1",
     "vike": "^0.4.171"
