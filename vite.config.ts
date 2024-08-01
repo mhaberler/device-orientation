@@ -18,7 +18,9 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
             VITE_TOPIC: JSON.stringify(process.env.VITE_TOPIC),
             VITE_USER: JSON.stringify(process.env.VITE_USER),
             VITE_PASSWORD: JSON.stringify(process.env.VITE_PASSWORD),
+            VITE_BASE: JSON.stringify(process.env.VITE_BASE),
         },
+        base: 'device-orientation', // <--- 👀
         rollupOptions: {
             // https://rollupjs.org/configuration-options/
         },
@@ -40,10 +42,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         },
         plugins: [
             // wasm(),
-            viteCompression({
-                algorithm: (config == 'hosted') ? 'brotliCompress' : 'gzip',
-                deleteOriginFile: (config == 'embedded')
-            }),
+            // viteCompression({
+            //     algorithm: (config == 'hosted') ? 'brotliCompress' : 'gzip',
+            //     deleteOriginFile: (config == 'embedded')
+            // }),
             qrcode(), // only applies in dev mode
             (config != 'embedded') &&
             basicSsl({
