@@ -4,19 +4,34 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "deploy": "tsc && vite build --base=/apps/device-orientation/ && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/device-orientation/"
+    "dev": "CONFIG=develop vite",
+    "dev-git": "VITE_GIT_VERSION=$(git log -1 --pretty=format:%h -- .) CONFIG=develop vite",
+    "dev-hosted": "CONFIG=hosted vite",
+    "dev-embedded": "CONFIG=embedded vite",
+    "build-hosted": "tsc && CONFIG=hosted vite build",
+    "build-embedded": "tsc && CONFIG=embedded vite build",
+    "preview-hosted": "CONFIG=hosted vite preview",
+    "preview-embedded": "CONFIG=embedded vite preview",
+    "deploy-hosted": "tsc && CONFIG=hosted vite build --base=/apps/device-orientation/ && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/device-orientation/",
+    "deploy-embedded": "tsc && CONFIG=embedded vite build  --base=/apps/device-orientation/ --emptyOutDir --outDir ../../data/apps/device-orientation/"
   },
   "devDependencies": {
+    "@types/pako": "^2.0.3",
     "@types/three": "^0.163.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-qrcode": "^0.2.3",
+    "vite-plugin-wasm": "^3.3.0"
   },
   "dependencies": {
+    "@intosoft/custoqr": "^0.0.8",
+    "@oneidentity/zstd-js": "^1.0.3",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "debug": "^4.3.4",
     "lil-gui": "^0.19.2",
+    "mqtt": "^5.6.2",
+    "notyf": "^3.10.0",
     "three": "^0.164.1",
     "vike": "^0.4.171"
   }

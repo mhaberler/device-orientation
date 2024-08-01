@@ -18,6 +18,8 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  /* overflow: hidden;  */
+
 }
 
 body,
@@ -31,16 +33,48 @@ canvas {
   outline: none;
 
   background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgb(8, 163, 166) 0%,
-    rgba(79, 166, 167, 0.849) 8%,
-    rgba(61, 79, 94, 0.885) 40%,
-    rgb(17, 19, 23)
-  );
+  background: linear-gradient(0deg,
+      rgb(8, 163, 166) 0%,
+      rgba(79, 166, 167, 0.849) 8%,
+      rgba(61, 79, 94, 0.885) 40%,
+      rgb(17, 19, 23));
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.lil-gui {
+  --background-color: #0c4b68;
+  --widget-color: rgb(17, 39, 50);
+  --padding: 2px;
+  --width: 450px;
+  --name-width: 35%; 
+}
+
+#content {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: #ccc;
+}
+
+#qrcode-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #010101;
+  text-align: center;
+}
+
+/* 
+svg {
+  transform-origin: center center;
+}
+
+object#compass {
+  position: absolute;
+  width: 15%;
+  height: 15%;
+}  */
