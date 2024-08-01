@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Generate PWA assets
-        run: npm run generate-pwa-assets
+      # - name: Generate PWA assets
+      #   run: npm run generate-pwa-assets
 
       - name: Build project
         run: npm run build
