@@ -25,7 +25,7 @@ jobs:
       #   run: npm run generate-pwa-assets
 
       - name: Build project
-        run: npm run build
+        run: npm run build-gh
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4

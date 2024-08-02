@@ -1,15 +1,11 @@
-import viteCompression from 'vite-plugin-compression';
-import basicSsl from '@vitejs/plugin-basic-ssl'
 import { defineConfig, loadEnv } from 'vite'
 import { qrcode } from 'vite-plugin-qrcode';
-
-/** @type {import('vite').UserConfig} */
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     const config: string = (process.env.CONFIG === undefined) ? '' : process.env.CONFIG;
     process.env = { ...process.env, ...loadEnv(config, 'environments') };
 
-    let foo: any =  {
+    let cfg: any =  {
 
         define: {
             VITE_BROKER: JSON.stringify(process.env.VITE_BROKER),
@@ -18,22 +14,13 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
             VITE_TOPIC: JSON.stringify(process.env.VITE_TOPIC),
             VITE_USER: JSON.stringify(process.env.VITE_USER),
             VITE_PASSWORD: JSON.stringify(process.env.VITE_PASSWORD),
-            VITE_BASE: JSON.stringify(process.env.VITE_BASE),
         },
-        base: 'device-orientation', // <--- 👀
+        // base: '/device-orientation', // <--- 👀
         rollupOptions: {
             // https://rollupjs.org/configuration-options/
         },
         build: {
             target: 'esnext', //browsers can handle the latest ES features
-            // https://stackoverflow.com/questions/71255838/shorten-file-names-in-react-build-directory-to-less-than-32-chars
-            rollupOptions: {
-                output: {
-                  assetFileNames: "a/[hash:10][extname]",
-                  chunkFileNames: "c/[hash:10].js",
-                  entryFileNames: "e/[hash:10].js"
-                }
-              }
         },
         esbuild: {
             supported: {
@@ -41,22 +28,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
             },
         },
         plugins: [
-            // wasm(),
-            // viteCompression({
-            //     algorithm: (config == 'hosted') ? 'brotliCompress' : 'gzip',
-            //     deleteOriginFile: (config == 'embedded')
-            // }),
             qrcode(), // only applies in dev mode
-            (config != 'embedded') &&
-            basicSsl({
-                /** name of certification */
-                name: 'test.mah.priv.at',
-                /** custom trust domains */
-                domains: ['*.mah.priv.at'],
-                /** custom certification directory */
-                certDir: '/Users/mah/.devServer/cert'
-            })
         ]
     };
-    return foo;
+    return cfg;
 });

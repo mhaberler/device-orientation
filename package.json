@@ -4,17 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "CONFIG=develop vite",
-    "dev-git": "VITE_GIT_VERSION=$(git log -1 --pretty=format:%h -- .) CONFIG=develop vite",
-    "dev-hosted": "CONFIG=hosted vite",
-    "dev-embedded": "CONFIG=embedded vite",
-    "build": "tsc && CONFIG=hosted vite build",
-    "build-hosted": "tsc && CONFIG=hosted vite build",
-    "build-embedded": "tsc && CONFIG=embedded vite build",
-    "preview-hosted": "CONFIG=hosted vite preview",
-    "preview-embedded": "CONFIG=embedded vite preview",
-    "deploy-hosted": "tsc && CONFIG=hosted vite build --base=/apps/device-orientation/ && rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/device-orientation/",
-    "deploy-embedded": "tsc && CONFIG=embedded vite build  --base=/apps/device-orientation/ --emptyOutDir --outDir ../../data/apps/device-orientation/"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build-gh": "tsc && CONFIG=gh-pages vite build --base=/device-orientation",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@types/pako": "^2.0.3",
