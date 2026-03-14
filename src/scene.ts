@@ -101,7 +101,7 @@ const sensorloggerConfig: Object = {
 }
 
 const animation = { enabled: false, play: true }
-const gltfModel = { enabled: false, name: "Modelname" }
+const gltfModel = { enabled: false, name: "Modelname", gltf: "Cube" }
 const mountSettings = {
     applyReferencePosition: false,
     referencePosition: new Quaternion().identity(),
@@ -330,10 +330,11 @@ function init() {
         cubeOneFolder.add(cube.position, 'y').min(-5).max(5).step(0.5).name('pos y')
         cubeOneFolder.add(cube.position, 'z').min(-5).max(5).step(0.5).name('pos z')
 
-        cubeOneFolder.add(cube.material, 'wireframe')
-        cubeOneFolder.addColor(cube.material, 'color')
-        cubeOneFolder.add(cube.material, 'metalness', 0, 1, 0.1)
-        cubeOneFolder.add(cube.material, 'roughness', 0, 1, 0.1)
+        const cubeMat = cube.material as MeshStandardMaterial
+        cubeOneFolder.add(cubeMat, 'wireframe')
+        cubeOneFolder.addColor(cubeMat, 'color')
+        cubeOneFolder.add(cubeMat, 'metalness', 0, 1, 0.1)
+        cubeOneFolder.add(cubeMat, 'roughness', 0, 1, 0.1)
 
         cubeOneFolder
             .add(cube.rotation, 'x', -Math.PI * 2, Math.PI * 2, Math.PI / 4)
@@ -522,6 +523,7 @@ function mqtt_setup(mqttSettings: MQTTSetting) {
             password: mqttSettings.password,
             clientId: clientId,
             clean: true,
+            rejectUnauthorized: false,
             connectTimeout: 5000,
             reconnectPeriod: 3000,
             protocol: mqttSettings.protocol,

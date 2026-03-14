@@ -1,4 +1,5 @@
 import viteCompression from 'vite-plugin-compression';
+// @ts-ignore
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { defineConfig, loadEnv } from 'vite'
 import { qrcode } from 'vite-plugin-qrcode';
