@@ -3,6 +3,8 @@ import viteCompression from 'vite-plugin-compression';
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { defineConfig, loadEnv } from 'vite'
 import { qrcode } from 'vite-plugin-qrcode';
+import { viteSingleFile } from 'vite-plugin-singlefile';
+
 
 /** @type {import('vite').UserConfig} */
 
@@ -10,7 +12,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     const config: string = (process.env.CONFIG === undefined) ? '' : process.env.CONFIG;
     process.env = { ...process.env, ...loadEnv(config, 'environments') };
 
-    let foo: any =  {
+    let foo: any = {
 
         define: {
             VITE_BROKER: JSON.stringify(process.env.VITE_BROKER),
@@ -28,11 +30,11 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
             // https://stackoverflow.com/questions/71255838/shorten-file-names-in-react-build-directory-to-less-than-32-chars
             rollupOptions: {
                 output: {
-                  assetFileNames: "a/[hash:10][extname]",
-                  chunkFileNames: "c/[hash:10].js",
-                  entryFileNames: "e/[hash:10].js"
+                    assetFileNames: "a/[hash:10][extname]",
+                    chunkFileNames: "c/[hash:10].js",
+                    entryFileNames: "e/[hash:10].js"
                 }
-              }
+            }
         },
         esbuild: {
             supported: {
@@ -41,6 +43,16 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         },
         plugins: [
             // wasm(),
+            viteSingleFile({
+                useRecommendedBuildConfig: true,
+                // inlinePattern: [
+                //     '**/*.css',           // only CSS
+                //     'assets/icons/**.svg' // specific folder
+                // ], removeViteModuleLoader: true,     // smaller size
+                // useCSP: false,                    // adds nonce / strict CSP (rarely needed)
+                // compress: false,                  // can use terser/zopfli but increases build time
+                // target: 'es2015'               // rarely changed
+            }),
             viteCompression({
                 algorithm: (config == 'hosted') ? 'brotliCompress' : 'gzip',
                 deleteOriginFile: (config == 'embedded')

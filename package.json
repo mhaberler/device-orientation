@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "clean": "bunx rimraf dist/ && bunx rimraf build/",
     "dev": "CONFIG=develop vite",
     "dev-git": "VITE_GIT_VERSION=$(git log -1 --pretty=format:%h -- .) CONFIG=develop vite",
     "dev-hosted": "CONFIG=hosted vite",
@@ -33,6 +34,7 @@
     "mqtt": "^5.15.0",
     "notyf": "^3.10.0",
     "three": "^0.183.2",
-    "vike": "^0.4.255"
+    "vike": "^0.4.255",
+    "vite-plugin-singlefile": "^2.3.0"
   }
 }
